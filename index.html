@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.45/moment-timezone-with-data-1970-2030.min.js"></script>
+    <title>Drop-down</title>
+  </head>
+  <body>
+    <form action="">
+      <select name="time zone" id="time-zone">
+        <option value="">Select an option</option>
+
+        <option value="paris">Paris 🇫🇷</option>
+        <option value="tokyo">Tokyo 🇯🇵</option>
+        <option value="sydney">Sydney 🇦🇺</option>
+      </select>
+    </form>
+  </body>
+  <script>
+    function displayInfo(event) {
+      if (event.target.value === "paris") {
+        let timeParis = moment()
+          .tz("Europe/Paris")
+          .format("dddd, MMMM D, YYYY h:m A");
+        alert(`It is ${timeParis} in Europe/Paris `);
+      }
+      if (event.target.value === "tokyo") {
+        let timeTokyo = moment()
+          .tz("Asia/Tokyo")
+          .format("dddd, MMMM D, YYYY h:m A");
+        console.log(timeTokyo);
+        alert(`It is ${timeTokyo} in Asia/Tokyo `);
+      }
+      if (event.target.value === "sydney") {
+        let timeSidney = moment()
+          .tz("Australia/Sydney")
+          .format("dddd, MMMM D, YYYY h:m A");
+        console.log(timeSidney);
+        alert(`It is ${timeSidney} in Australia/Sidney `);
+      }
+    }
+    let citySelect = document.querySelector("#time-zone");
+    citySelect.addEventListener("change", displayInfo);
+  </script>
+</html>
